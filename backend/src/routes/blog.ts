@@ -49,7 +49,7 @@ blogRouter.post('/', async(c)=> {
     const {success} = blogPostSchema.safeParse(body);
     const authorId = c.get("jwtPayload") ;
     try {
-      if(!success) return c.json({msg: "Ivalid Inputs"});
+      if(!success) return c.json({msg: "Ivalid Credentials !"});
         const blog = await prisma.post.create({
             data:{
                 title: body.title,
@@ -80,7 +80,7 @@ blogRouter.post('/', async(c)=> {
     const {success} = blogPutSchema.safeParse(body);
     const authorId = c.get("userId");
     try{
-      if(!success) return c.json({msg: "Ivalid Inputs"});
+      if(!success) return c.json({msg: "Ivalid Credentials!"});
       
       await prisma.post.update({
         where: {

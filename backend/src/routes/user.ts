@@ -25,8 +25,9 @@ userRouter.post('signup', async(c)=> {
   
     const body = await c.req.json();
     const {success} = signupPostSchema.safeParse(body);
+
     try{
-    if(!success) return c.json({msg: "Ivalid Inputs"});
+    if(!success) return c.json({msg: "Ivalid Credentials!"});
     const user =await prisma.user.create({
       data:{
         email: body.email,
@@ -56,7 +57,7 @@ userRouter.post('signup', async(c)=> {
     const body = await c.req.json();
     const {success} = signinPostSchema.safeParse(body);
     try{
-      if(!success) return c.json({msg: "Ivalid Inputs"});
+      if(!success) return c.json({msg: "Ivalid Credentials!"});
       const user = await prisma.user.findUnique({
         where:{
           email: body.email,
