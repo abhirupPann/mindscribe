@@ -47,7 +47,7 @@ blogRouter.post('/', async(c)=> {
       }).$extends(withAccelerate())    
     const body = await c.req.json();
     const {success} = blogPostSchema.safeParse(body);
-    const authorId = c.get("jwtPayload") ;
+    const authorId = c.get("jwtPayload");
     try {
       if(!success) return c.json({msg: "Ivalid Credentials !"});
         const blog = await prisma.post.create({
@@ -119,7 +119,40 @@ blogRouter.post('/', async(c)=> {
       console.log(e.message)
       return c.status(411);
     }
-   });
+   })
 
+
+
+// blogRouter.get('/notbulk',async(c)=> {
+//   const prisma = new PrismaClient({
+//     datasourceUrl: c.env?.DATABASE_URL,
+//   }).$extends(withAccelerate())
+//   const id = "0b50a930-0e2e-4e81-9083-20a5475683f0"
+//   try{
+//      const posts =  await prisma.post.findUnique({
+//       where:{
+//         id
+//       }
+//      });
+//      return c.json(posts);
+//   }catch(e){
+//     console.log(e);
+//   }
+// })
+//todo: Pagination
+
+// {
+//   select: {
+//     content: true,
+//     title: true,
+//     id: true,
+//     author: {
+//       select: {
+//         name: true
+//       }
+//     }
+//   }
+// }
+//todo: pagination
 
 export default blogRouter;

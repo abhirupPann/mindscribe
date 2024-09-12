@@ -81,20 +81,25 @@ userRouter.post('signup', async(c)=> {
   
   });
 
-//todo: Pagination
-userRouter.get('bulk', async(c)=> {
-  const prisma = new PrismaClient({
-    datasourceUrl: c.env?.DATABASE_URL,
-  }).$extends(withAccelerate());
-
-  try {
+  userRouter.get('/bulk', async (c) => {
+    const prisma = new PrismaClient({
+      datasourceUrl: c.env?.DATABASE_URL,
+    }).$extends(withAccelerate())
+  
+    const posts = await prisma.post.findMany({
+        select: {
+          content: true,
+          title: true,
+          id: true,
+          author: {
+            select: {
+              name: true
+            }
+          }
+        }
+      });
     
-    const posts = await prisma.post.findMany();
     return c.json(posts);
-  } catch (e: any) {
-    console.log(e.message)
-    return c.status(403);
-  }
-  });
+  })
 
 export default userRouter;

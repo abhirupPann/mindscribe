@@ -11,25 +11,13 @@ function Auth({type}: {type: "signin" | "signup"}) {
     password:""
   })
   const navigate = useNavigate();
-  // const handleOnSubmit = async(e: React.ChangeEvent<HTMLFormElement>)=>{
-  //   e.preventDefault();
-    
-  //   try {
-  //     const res = await axios.post("https://backend.abhiruppan2016.workers.dev/api/v1/user/signup", sign);
-  //     const resData = res.data;
-  //     console.log(resData);
-  //     navigate("/blog");
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
   const handleOnSubmit = async (e: any) => {
     e.preventDefault();
     try {
         const response = await axios.post(`${BACKEND_URL}/api/v1/user/${type}`, sign);
         const data = response.data;
         console.log(response.statusText);
-        localStorage.setItem("userInfo", data.jwt);
+        localStorage.setItem("userInfo", data);
         navigate("/blogs");
     }
     catch (error) {
