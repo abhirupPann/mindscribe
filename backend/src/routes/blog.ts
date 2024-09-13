@@ -112,6 +112,9 @@ blogRouter.post('/', async(c)=> {
       const post = await prisma.post.findUnique({
         where:{
           id
+        },
+        include:{
+          author: true
         }
       })
       return c.json(post);

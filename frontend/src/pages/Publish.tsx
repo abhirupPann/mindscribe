@@ -23,15 +23,17 @@ function Publish() {
                 Authorization: `Bearer ${localStorage.getItem("userInfo")}`
         }},
         )
-        if(res) navigate(`/blogs/${res.data}`)
+        await new Promise(resolve => setTimeout(resolve, 5000));
         
-        console.log(res.data)
+        if(res) navigate(`/blogs/${res.data.id}`);
+        
+        console.log(res.data.id)
   }
   return (
     <div>
       <AppBar2 handleOnclick={handleOnClick}/>
       <div className=" mx-[10vw]">
-      <input type="textarea" placeholder="Title" className="input border-none text-5xl w-full outline-none focus:outline-none font-bold mt-[10vh] max-h-[30%] shadow-md py-[5vh]"  onChange={(e)=>{setTitle(e.target.value)}}/>
+      <input type="textarea" placeholder="Title" className="input border-none text-5xl w-full outline-none focus:outline-none font-bold mt-[10vh] max-h-[30%] shadow-sm py-[5vh]"  onChange={(e)=>{setTitle(e.target.value)}}/>
       <textarea placeholder="Content" className="input border-none text-2xl w-full outline-none focus:outline-none mt-[10vh] h-[100vh]" onChange={(e)=>{setContent(e.target.value)}}/>
       </div>   
     </div>

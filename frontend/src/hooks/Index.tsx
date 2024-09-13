@@ -7,6 +7,10 @@ export interface Data {
   id: string;
   published: boolean;
   title: string;
+  author: {
+    id : string;
+    name: String;
+  }
   }
   
 
@@ -30,7 +34,7 @@ export const useBlog=(id: string)=>{
   const [loading, setLoading] = useState(true);
   useEffect(()=>{
       const getData = async()=>{
-            const res =  await axios.get(`http://127.0.0.1:8787/api/v1/blog/${id}`,
+            const res =  await axios.get(`${BACKEND_URL}/api/v1/blog/${id}`,
               {headers:{
                 Authorization: `Bearer ${localStorage.getItem("userInfo")}`
               }}

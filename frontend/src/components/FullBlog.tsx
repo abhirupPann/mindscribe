@@ -11,7 +11,7 @@ function FullBlog(data: Data) {
   
              <img src={avatar} alt="" width={50}/>
         
-            <p className=" pt-[2vh]">{data.authorId}</p>
+            <p className=" pt-[2vh]">{data.author.name}</p>
             <div className=" w-1 h-1 mt-[2.5vh] rounded-full bg-gray-400"></div>
             <p className="text-gray-400 pt-[2vh] rounded-full">{date}</p>
         </div>

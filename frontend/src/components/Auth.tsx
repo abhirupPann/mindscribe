@@ -4,7 +4,7 @@ import React, { useState } from "react"
 import axios from "axios"
 import { BACKEND_URL } from "../config"
 function Auth({type}: {type: "signin" | "signup"}) {
-   
+  const [loading, setLoading] = useState(false);
   const [sign, setSign] = useState<signupPostType>({
     name: "",
     email:"",
@@ -14,6 +14,7 @@ function Auth({type}: {type: "signin" | "signup"}) {
   const handleOnSubmit = async (e: any) => {
     e.preventDefault();
     try {
+        setLoading(true);
         const response = await axios.post(`${BACKEND_URL}/api/v1/user/${type}`, sign);
         const data = response.data;
         console.log(response.statusText);
@@ -62,17 +63,18 @@ function Auth({type}: {type: "signin" | "signup"}) {
         </div>
   
         <div>
-            { type=="signup" ? <button type="submit" className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Sign up</button>: 
+            {loading? <div className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"> <span className=" loading loading-infinity loading-md"></span></div>
+            : type=="signup" ? <button type="submit" className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Sign up</button>: 
             <button type="submit" className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Sign in</button>}
           
         </div>
       </form>
       {type== "signin" ? 
-      <Link to="/signup"><p className="mt-10 text-center text-sm text-gray-500">
+        <Link to="/signup"><p className="mt-10 text-center text-sm text-gray-500">
         Not a member?<a href="#" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">SignUp</a></p></Link>
-    :<Link to="/signin"><p className="mt-10 text-center text-sm text-gray-500">
+        :<Link to="/signin"><p className="mt-10 text-center text-sm text-gray-500">
         Already a member?<a href="#" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">Login</a>
-     </p></Link>}
+     </p></Link> }
 
     </div>
   </div>

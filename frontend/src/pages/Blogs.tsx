@@ -17,7 +17,7 @@ function Blogs() {
   return (
     <div className=' mx-[10vw]'> 
      <div>
-     <AppBar/>
+     <AppBar searchbar/>
      {loading ? (
       <BlogsSkeleton/>
       ) : data ? (

@@ -13,13 +13,13 @@ function Blog() {
   console.log(loading)
   return (
     <div>
-      <AppBar/>
+      <AppBar searchbar={false}/>
 
       {loading ? (
         <div><BlogSkeleton/></div>
       ) : data ? (
 
-        <div><FullBlog content={data.content} authorId={data.authorId} id={data.id} published title={data.title}/></div>
+        <div><FullBlog content={data.content} authorId={data.authorId} author={data.author} id={data.id} published title={data.title}/></div>
       ) : (
         <div>No data available</div>
       )}
