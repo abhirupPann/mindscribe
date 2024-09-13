@@ -6,7 +6,7 @@ function AppBar() {
     <div className=" flex justify-between items-center mx-[2vw] mt-[2vh] mb-[5vh]">
       <Link to="/blogs"><div className=" text-xl font-semibold ">MindScribe</div></Link>
       <input type="text" className=" w-[30vw] rounded-full border shadow-md px-[2vw] py-[1vh]"/>
-      <Link to="/publish"><div className=" flex gap-3 ml-[15vw] text-xl items-center bg-gray-100 px-5 py-2 rounded-full"><IconWriting/>Write</div></Link>
+      <div ><Link to="/publish" className=" flex gap-3 ml-[15vw] text-xl items-center bg-gray-100 px-5 py-2 rounded-full"><IconWriting/>Write</Link></div>
       <div className="avatar rounded-full w-10 h-5 mb-3">
             <img src={avatar} alt="" />
       </div>
