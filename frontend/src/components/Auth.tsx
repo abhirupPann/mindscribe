@@ -40,7 +40,7 @@ function Auth({type}: {type: "signin" | "signup"}) {
         {type=="signup" ? <div>
           <label htmlFor='username' className="block text-sm font-medium leading-6 text-gray-900 dark:text-white">Username</label>
           <div className="mt-2">
-            <input  id="username" onChange={(e: React.ChangeEvent<HTMLInputElement>)=>{setSign({...sign, name: e.target.value})}} name="username" type="text" autoComplete='username' required className="block w-full px-[1vw] rounded-md border-0 py-1.5 text-gray-900 dark:text-whites shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
+            <input  id="username" onChange={(e: React.ChangeEvent<HTMLInputElement>)=>{setSign({...sign, name: e.target.value})}} name="username" type="text" autoComplete='username' required className="block w-full px-[1vw] rounded-md border-0 py-1.5 text-gray-900 dark:text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
           </div>
         </div>: null}
         <div>
