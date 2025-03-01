@@ -15,7 +15,7 @@ const values={
 function Blogs() {
   const {data, loading} = useBlogs();
   return (
-    <div className=' mx-[10vw]'> 
+    <div className=' mx-[10vw] bg-white dark:bg-gray-800'> 
      <div>
      <AppBar searchbar/>
      {loading ? (

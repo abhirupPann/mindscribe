@@ -7,7 +7,7 @@ import Publish from "./pages/Publish"
 
 function App() {
   return (
-    <div>
+    <div className="bg-white dark:bg-gray-800">
       <Routes>
         <Route path="/"  element={<Navigate to="/signup"/>}/>
         <Route element={<SignIn/>} path="/signin"/>
