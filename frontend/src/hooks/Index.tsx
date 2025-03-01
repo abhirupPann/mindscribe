@@ -31,7 +31,7 @@ export const useBlogs=()=>{
 
 export const useBlog=(id: string)=>{
   const [data, setData] = useState<Data>();
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading ] = useState(true);
   useEffect(()=>{
       const getData = async()=>{
             const res =  await axios.get(`${BACKEND_URL}/api/v1/blog/${id}`,
